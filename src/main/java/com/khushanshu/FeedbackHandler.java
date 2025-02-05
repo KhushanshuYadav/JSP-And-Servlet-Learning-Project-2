@@ -29,6 +29,9 @@ public class FeedbackHandler extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		String name =request.getParameter("name");
+		System.out.println(name);
+		
 		response.setContentType("text/html");
 		PrintWriter writer=response.getWriter();
 		writer.println("Response");
