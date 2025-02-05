@@ -15,23 +15,17 @@ import java.io.PrintWriter;
 public class FeedbackHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public FeedbackHandler() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+    
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		//parameter extraction
 		String name =request.getParameter("name");
-		System.out.println(name);
+		System.out.println(name); 
 		
+		//sending response
 		response.setContentType("text/html");
 		PrintWriter writer=response.getWriter();
 		writer.println("Response");
