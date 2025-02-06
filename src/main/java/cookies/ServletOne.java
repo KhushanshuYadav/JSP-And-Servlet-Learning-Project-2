@@ -20,7 +20,7 @@ import java.util.Enumeration;
 //1.Below servlet will send response + cookies to client i.e  creates and send cookies to client
 
 //2. Below servlet will create HTTP session object for state management
-@WebServlet("/ServletOne")
+//@WebServlet("/ServletOne")
 public class ServletOne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -69,7 +69,7 @@ public class ServletOne extends HttpServlet {
 		//getting servlet context
 		ServletContext servletcontext=getServletContext();
 		
-		//Extracting initialization parameters from ServletConfig
+		//Extracting initialization parameters from ServletContext
 		Enumeration<String> pNames=servletcontext.getInitParameterNames();
 		
 		while (pNames.hasMoreElements()) {
@@ -85,6 +85,9 @@ public class ServletOne extends HttpServlet {
 		servletcontext.setAttribute("msg from servlet one","Hello Servlet Two");
 		
 		
+		//Extracting initialization parameters from ServletConfig
+		String name=getServletConfig().getInitParameter("ServletName");
+		response.getWriter().println("<h1>"+"Servlet Name is "+name+"<h1>");
 		
 		
 		

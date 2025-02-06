@@ -2,6 +2,7 @@ package cookies;
 
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +21,15 @@ import java.util.Enumeration;
 //Below servlet is for testing purpose 
 //it receives request from client and tries to extract cookies
 //it also have access to session object 
-@WebServlet("/SecondServlet")
+@WebServlet(
+		
+		urlPatterns="/SecondServlet",
+		initParams= {
+				
+				@WebInitParam(name= "SecondServletName", value = "SecondServlet")
+		}
+		
+		)
 public class SecondServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -82,6 +91,10 @@ public class SecondServlet extends HttpServlet {
       //extracting attribute form servletContext binded by servlet one\
       String msg=(String)getServletContext().getAttribute("msg from servlet one");
       response.getWriter().println("<h1>Message is:  "+msg+"<h1>");
+      
+    //Extracting initialization parameters from ServletConfig
+    String name=getServletConfig().getInitParameter("SecondServletName");
+    response.getWriter().println("<h1>"+"Servlet Name is "+name+"<h1>");
       		
 	}
 

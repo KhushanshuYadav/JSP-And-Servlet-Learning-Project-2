@@ -18,5 +18,24 @@
          <param-value>2.1.0</param-value>
   </context-param>
   
+  <servlet>
+        
+        <servlet-name>FirstServlet</servlet-name>
+        <servlet-class>cookies.ServletOne</servlet-class>
+        <init-param>
+            <param-name>ServletName</param-name>
+            <param-value>FirstServlet</param-value>
+        </init-param>
+  
+ </servlet>
+ 
+ <servlet-mapping>
+ <servlet-name>FirstServlet</servlet-name>
+ <url-pattern>/ServletOne</url-pattern>
+ </servlet-mapping>
+ 
+ 
+  
+  
   
 </web-app>
