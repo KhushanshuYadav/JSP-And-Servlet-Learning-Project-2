@@ -1,5 +1,6 @@
 package cookies;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 /**
  * Servlet implementation class SecondServlet
@@ -62,6 +64,25 @@ public class SecondServlet extends HttpServlet {
         Integer userPhNo=(Integer) session.getAttribute("userPhNo");  //returns value which is of type object
         
         writer.println("<h1>Session data:  "+userPhNo+"</h1>");
+        
+        
+        
+      //Extracting initialization parameters from ServletConfig
+      ServletContext servletcontext=getServletContext();
+      		
+      Enumeration<String> pNames=servletcontext.getInitParameterNames();
+      		
+      while (pNames.hasMoreElements()) {
+    	  String pName = pNames.nextElement();
+      	  String pValue=servletcontext.getInitParameter(pName);
+      		    
+      	  response.getWriter().println("<h1>Parameter name: "+pName+" and Parameter value: "+pValue+"<h1>");
+      	  }
+      
+      //extracting attribute form servletContext binded by servlet one\
+      String msg=(String)getServletContext().getAttribute("msg from servlet one");
+      response.getWriter().println("<h1>Message is:  "+msg+"<h1>");
+      		
 	}
 
 }

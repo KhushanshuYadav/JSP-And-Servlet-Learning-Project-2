@@ -1,5 +1,6 @@
 package cookies;
 
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.Cookie;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.Enumeration;
 
 /**
  * Servlet implementation class ServletOne
@@ -59,11 +61,32 @@ public class ServletOne extends HttpServlet {
 		session.setAttribute("userPhNo", userPhNo);
 		session.setAttribute("userEmailAdd", userEmailAdd);
 		
-		
 		session.setMaxInactiveInterval(10*60); //terminates or invalidates session if no communication between client and server till specified seconds
 		
+		response.getWriter().println("<h1>Cookie and Session created<h1>");
 		
-		response.getWriter().println("Cookie and Session created");
+		
+		//getting servlet context
+		ServletContext servletcontext=getServletContext();
+		
+		//Extracting initialization parameters from ServletConfig
+		Enumeration<String> pNames=servletcontext.getInitParameterNames();
+		
+		while (pNames.hasMoreElements()) {
+			
+		    String pName = pNames.nextElement();
+		    String pValue=servletcontext.getInitParameter(pName);
+		    
+		    response.getWriter().println("<h1>Parameter name: "+pName+" Parameter value: "+pValue+"<h1>");
+		    
+		}
+		
+		//setting attributes into servlet context as key(String)-value(Object)
+		servletcontext.setAttribute("msg from servlet one","Hello Servlet Two");
+		
+		
+		
+		
 		
 		
 	}

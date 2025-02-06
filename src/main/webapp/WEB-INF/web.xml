@@ -4,4 +4,19 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  
+  <!--defining ServletConfig initialization parameters which are immutable once app starts-->
+  <context-param>
+         <!-- both name and value are of string type -->
+         <param-name>appName</param-name>
+         <param-value>FeedbackApp</param-value>
+  </context-param>
+  
+  <context-param>
+         <!-- both name and value are of string type -->   
+         <param-name>appVersion</param-name>
+         <param-value>2.1.0</param-value>
+  </context-param>
+  
+  
 </web-app>
