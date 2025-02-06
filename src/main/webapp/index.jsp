@@ -26,5 +26,14 @@
         <!-- Submit Button -->
         <button type="submit">Submit</button>
     </form>
+    
+    <br>
+    <a href="<%= application.getContextPath() %>/ServletOne" ><button>Cookie creation and session servlet</button></a>
+    <br>
+    <a href="<%= application.getContextPath() %>/SecondServlet" ><button>Cookie and session data output servlet</button></a>
+    
+    
+    
+
 </body>
 </html>
